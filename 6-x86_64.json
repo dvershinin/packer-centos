@@ -15,7 +15,7 @@
       "iso_checksum_type": "sha1",
       "iso_url": "http://mirror.yandex.ru/centos/6/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
       "net_device": "virtio-net",
-      "output_directory": "image/6/x86_64/qemu/",
+      "output_directory": "images/6/x86_64/qemu/",
       "qemuargs": [
         [
           "-m",
@@ -27,7 +27,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=image/6/x86_64/qemu/centos-6-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=images/6/x86_64/qemu/centos-6-x86_64.raw"
         ],
         [
           "-device",
