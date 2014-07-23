@@ -58,13 +58,11 @@
   "post-processors": [
     {
       "type": "strip",
-      "keep_input_artifact": false,
       "output": "output/centos-7-x86_64-strip/"
     },
     {
       "type": "compress",
       "format": "gzip",
-      "keep_input_artifact": false,
       "output": "output/centos-7-x86_64-compress/"
     }
   ]
