@@ -5,7 +5,7 @@
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7.cfg<enter>"
       ],
-      "boot_wait": "10s",
+      "boot_wait": "5s",
       "disk_interface": "scsi",
       "disk_size": 5000,
       "format": "raw",
@@ -19,7 +19,7 @@
       "qemuargs": [
         [
           "-m",
-          "size=1024Mib"
+          "1024"
         ],
         [
           "-device",
