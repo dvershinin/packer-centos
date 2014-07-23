@@ -19,7 +19,7 @@
       "qemuargs": [
         [
           "-m",
-          "768m"
+          "size=1024Mib"
         ],
         [
           "-device",
