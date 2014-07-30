@@ -7,3 +7,5 @@ grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/e
 
 
 rm -f /etc/udev/rules.d/70-persistent-net.rules 
+
+yum -y install qemu-guest-agent
