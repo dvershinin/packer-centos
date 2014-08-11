@@ -3,23 +3,23 @@
     {
       "accelerator": "kvm",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7.cfg<enter>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks6.cfg<enter>"
       ],
-      "boot_wait": "5s",
+      "boot_wait": "10s",
       "disk_interface": "scsi",
       "disk_size": 5000,
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum": "e5a2c3c6d245b17e8d6ae2c31d2f34b62c273a0e",
+      "iso_checksum": "3a9662cb65f9d59677d76acfdb73289da43b4599",
       "iso_checksum_type": "sha1",
-      "iso_url": "http://mirror.yandex.ru/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso",
+      "iso_url": "http://mirror.yandex.ru/centos/6/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/centos-7-x86_64-qemu/",
+      "output_directory": "output/centos-6-x86_64-qemu/",
       "qemuargs": [
         [
           "-m",
-          "1024"
+          "768"
         ],
         [
           "-device",
@@ -27,7 +27,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/centos-7-x86_64-qemu/centos-7-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/centos-6-x86_64-qemu/centos-6-x86_64.raw"
         ],
         [
           "-device",
@@ -43,7 +43,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "centos-7-x86_64"
+      "vm_name": "centos-6-x86_64"
     }
   ],
   "provisioners": [
@@ -56,14 +56,16 @@
     }
   ],
   "post-processors": [
-    {
-      "type": "strip",
-      "output": "output/centos-7-x86_64-strip/"
-    },
-    {
-      "type": "compress",
-      "format": "gzip",
-      "output": "output/centos-7-x86_64-compress/"
-    }
+    [
+      {
+        "type": "strip",
+        "output": "output/centos-6-x86_64-strip/"
+      },
+      {
+        "type": "compress",
+        "format": "gzip",
+        "output": "output/centos-6-x86_64-compress/"
+      }
+    ]
   ]
 }
