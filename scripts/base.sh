@@ -31,7 +31,6 @@ EOF
 
 grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm && yum -y --enablerepo="epel" install cloud-init
 
-yum -y install qemu-guest-agent
 sed -i 's|^disable_root:.*|disable_root: 0|g' /etc/cloud/cloud.cfg
 sed -i 's|^ssh_pwauth:.*|ssh_pwauth: 1|g' /etc/cloud/cloud.cfg
 ln --symbolic /dev/null /etc/udev/rules.d/80-net-name-slot.rules
@@ -40,3 +39,21 @@ sed -i 's|GSSAPIAuthentication yes|GSSAPIAuthentication no|g'  /etc/ssh/sshd_con
 sed -i 's|PasswordAuthentication no|PasswordAuthentication yes|g' /etc/ssh/sshd_config
 sed -i 's|#PermitRootLogin yes|PermitRootLogin yes|g' /etc/ssh/sshd_config
 
+cat <<EOF > /etc/fstab
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>          <options>                        <dump>  <pass>
+/dev/sda1       /               ext4    defaults,relatime,discard,errors=panic      0       1
+EOF
+
+for p in dracut-config-rescue plymouth-scripts alsa-tools-firmware alsa-firmware plymouth plymouth-core-libs btrfs-progs iwl105-firmware iwl7260-firmware alsa xfsprogs iwl2030-firmware iwl6000g2b-firmware iwl2000-firmware iwl3160-firmware; do
+    yum -y remove $p || :
+done
+
+yum -y install nano  cloud-init
+
+dracut -H --force
