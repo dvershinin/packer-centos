@@ -29,10 +29,14 @@ IPV6_FAILURE_FATAL=yes
 NAME="eth0"
 EOF
 
-grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm && yum -y --enablerepo="epel" install cloud-init
+grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
+: <<COMMENT
+yum -y --enablerepo="epel" install cloud-init
 
 sed -i 's|^disable_root:.*|disable_root: 0|g' /etc/cloud/cloud.cfg
 sed -i 's|^ssh_pwauth:.*|ssh_pwauth: 1|g' /etc/cloud/cloud.cfg
+COMMENT
+
 ln --symbolic /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 sed -i 's|#UseDNS yes|UseDNS no|g' /etc/ssh/sshd_config
 sed -i 's|GSSAPIAuthentication yes|GSSAPIAuthentication no|g'  /etc/ssh/sshd_config
@@ -54,6 +58,9 @@ for p in dracut-config-rescue plymouth-scripts alsa-tools-firmware alsa-firmware
     yum -y remove $p || :
 done
 
-yum -y install nano  cloud-init
+yum -y install nano
+: <<COMMENT
+yum -y --enablerepo="epel" install cloud-init
+COMMENT
 
 dracut -H --force
