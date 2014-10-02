@@ -1,5 +1,7 @@
 #!/bin/sh -ex
 
+
+yum -y install cloud-init
 echo "==> Cleaning up yum cache of metadata and packages to save space"
 yum -y clean all
 

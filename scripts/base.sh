@@ -29,7 +29,8 @@ IPV6_FAILURE_FATAL=yes
 NAME="eth0"
 EOF
 
-grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
+grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-1.noarch.rpm
+
 : <<COMMENT
 yum -y --enablerepo="epel" install cloud-init
 
