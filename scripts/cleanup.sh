@@ -8,3 +8,5 @@ yum -y clean all
 rm -rf /tmp/*
 
 rm -f /etc/udev/rules.d/70-persistent-net.rules
+
+fstrim -v /
