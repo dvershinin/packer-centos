@@ -3,7 +3,7 @@
     {
       "accelerator": "kvm",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7.cfg<enter>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks6.cfg<enter>"
       ],
       "boot_wait": "5s",
       "disk_interface": "scsi",
@@ -12,11 +12,11 @@
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum": "e5a2c3c6d245b17e8d6ae2c31d2f34b62c273a0e",
+      "iso_checksum": "4ed6c56d365bd3ab12cd88b8a480f4a62e7c66d2",
       "iso_checksum_type": "sha1",
-      "iso_url": "http://mirror.yandex.ru/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso",
+      "iso_url": "http://mirror.yandex.ru/centos/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/centos-7-x86_64-qemu/",
+      "output_directory": "output/centos-6-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -29,7 +29,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/centos-7-x86_64-qemu/centos-7-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/centos-6-x86_64-qemu/centos-6-x86_64.raw"
         ],
         [
           "-device",
@@ -45,7 +45,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "centos-7-x86_64"
+      "vm_name": "centos-6-x86_64"
     }
   ],
   "provisioners": [
@@ -69,7 +69,7 @@
       {
         "type": "compress",
         "format": "pgzip",
-        "output": "output/centos-7-x86_64-compress/"
+        "output": "output/centos-6-x86_64-compress/"
       }
     ]
   ]

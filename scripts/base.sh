@@ -29,7 +29,7 @@ IPV6_FAILURE_FATAL=yes
 NAME="eth0"
 EOF
 
-grep -q " 7\." /etc/centos-release && rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-1.noarch.rpm
+yum -y install epel-release
 
 : <<COMMENT
 yum -y --enablerepo="epel" install cloud-init
@@ -59,9 +59,8 @@ for p in dracut-config-rescue plymouth-scripts alsa-tools-firmware alsa-firmware
     yum -y remove $p || :
 done
 
-yum -y install nano
-: <<COMMENT
-yum -y --enablerepo="epel" install cloud-init
-COMMENT
+yum -y install nano dracut
 
 dracut -H --force
+
+test -f /etc/selinux/config && sed -i 's|SELINUX=.*|SELINUX=disabled|g' /etc/selinux/config
