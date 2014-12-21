@@ -31,13 +31,6 @@ EOF
 
 yum -y install epel-release
 
-: <<COMMENT
-yum -y --enablerepo="epel" install cloud-init
-
-sed -i 's|^disable_root:.*|disable_root: 0|g' /etc/cloud/cloud.cfg
-sed -i 's|^ssh_pwauth:.*|ssh_pwauth: 1|g' /etc/cloud/cloud.cfg
-COMMENT
-
 ln --symbolic /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 sed -i 's|#UseDNS yes|UseDNS no|g' /etc/ssh/sshd_config
 sed -i 's|GSSAPIAuthentication yes|GSSAPIAuthentication no|g'  /etc/ssh/sshd_config
