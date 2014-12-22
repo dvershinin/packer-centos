@@ -54,6 +54,6 @@ done
 
 yum -y install nano dracut
 
-dracut -H --force
-
 test -f /etc/selinux/config && sed -i 's|SELINUX=.*|SELINUX=disabled|g' /etc/selinux/config
+
+dracut -H --force
