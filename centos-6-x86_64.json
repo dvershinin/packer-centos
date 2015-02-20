@@ -1,4 +1,7 @@
 {
+  "variables": {
+    "PROVISIONER": ""
+  },
   "builders": [
     {
       "accelerator": "kvm",
@@ -61,6 +64,9 @@
         "scripts/cleanup.sh",
         "scripts/cloudinit-config.sh"
       ],
+      "environment_vars": [
+         "PROVISIONER={{user `PROVISIONER`}}"
+      ],
       "pause_before": "30s",
       "type": "shell"
     }
@@ -69,7 +75,7 @@
     [
       {
         "type": "compress",
-        "format": "pgzip",
+        "format": "bgzf",
         "output": "output/centos-6-x86_64-compress/"
       }
     ]
