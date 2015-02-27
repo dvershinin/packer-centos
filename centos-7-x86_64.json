@@ -1,4 +1,7 @@
 {
+  "variables": {
+    "PROVISIONER": ""
+  },
   "builders": [
     {
       "accelerator": "kvm",
