@@ -34,7 +34,6 @@ EOF
 
 yum -y install epel-release
 yum -y upgrade
-yum -y install cloud-init
 
 ln --symbolic /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 sed -i 's|#UseDNS yes|UseDNS no|g' /etc/ssh/sshd_config

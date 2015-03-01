@@ -65,7 +65,7 @@
         "scripts/cloudinit-config.sh"
       ],
       "environment_vars": [
-         "PROVISIONER={{user `PROVISIONER`}}"
+        "PROVISIONER={{user `PROVISIONER`}}"
       ],
       "pause_before": "30s",
       "type": "shell"
