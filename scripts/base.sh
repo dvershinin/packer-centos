@@ -1,6 +1,5 @@
 #!/bin/bash -ex
 
-yum -y upgrade  
 cat <<EOF > /etc/resolv.conf
 nameserver 2001:4860:4860::8888
 nameserver 2001:4860:4860::8844
@@ -12,7 +11,7 @@ EOF
 cat <<EOF >  /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE="eth0"
 BOOTPROTO=dhcp
-NM_CONTROLLED="no"
+NM_CONTROLLED="yes"
 PERSISTENT_DHCLIENT=1
 ONBOOT="yes"
 TYPE=Ethernet
@@ -27,9 +26,15 @@ IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
 IPV6_FAILURE_FATAL=yes
 NAME="eth0"
+DNS1=8.8.8.8
+DNS2=8.8.4.4
+DNS3=2001:4860:4860::8888
+DNS4=2001:4860:4860::8844
 EOF
 
 yum -y install epel-release
+yum -y upgrade
+yum -y install cloud-init
 
 ln --symbolic /dev/null /etc/udev/rules.d/80-net-name-slot.rules
 sed -i 's|#UseDNS yes|UseDNS no|g' /etc/ssh/sshd_config
