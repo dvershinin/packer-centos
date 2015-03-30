@@ -2,7 +2,6 @@
 
 case $PROVISIONER in
     cloudinit)
-        yum -y install cloud-init cloud-utils
         yum -y install dracut-modules-growroot || true
         ;;
 esac
