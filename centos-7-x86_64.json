@@ -62,7 +62,7 @@
     {
       "scripts": [
         "scripts/cleanup.sh",
-        "scripts/cloudinit-config.sh"
+        "scripts/cloudinit.sh"
       ],
       "environment_vars": [
         "PROVISIONER={{user `PROVISIONER`}}"
