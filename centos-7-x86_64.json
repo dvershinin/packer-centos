@@ -61,6 +61,7 @@
       {
         "type": "compress",
         "format": "bgzf",
+        "metadata": true,
         "output": "output/centos-7-x86_64-compress/"
       },
       {
