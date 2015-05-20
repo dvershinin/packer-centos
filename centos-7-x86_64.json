@@ -9,7 +9,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7.cfg<enter>"
       ],
       "boot_wait": "5s",
-      "disk_interface": "scsi",
+      "disk_interface": "virtio-scsi",
       "disk_size": 5000,
       "disk_cache": "unsafe",
       "disk_discard": "unmap",
@@ -26,22 +26,6 @@
         [
           "-m",
           "1024"
-        ],
-        [
-          "-device",
-          "virtio-scsi-pci,id=scsi0"
-        ],
-        [
-          "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/centos-7-x86_64-qemu/centos-7-x86_64"
-        ],
-        [
-          "-device",
-          "scsi-hd,bus=scsi0.0,drive=drive0"
-        ],
-        [
-          "-device",
-          "virtio-net,netdev=user.0"
         ]
       ],
       "shutdown_command": "shutdown -h now",
