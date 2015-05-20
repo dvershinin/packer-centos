@@ -8,7 +8,7 @@
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7.cfg<enter>"
       ],
-      "boot_wait": "5000s",
+      "boot_wait": "5s",
       "disk_interface": "scsi",
       "disk_size": 5000,
       "disk_cache": "unsafe",
